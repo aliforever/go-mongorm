@@ -1,6 +1,12 @@
 # go-mongorm
 This is a MongoDB ORM written with generics
 
+## Requirement
+```
+go install golang.org/dl/go1.18beta2@latest
+go1.18beta2 download
+```
+
 ## Install
 ```go get -u github.com/aliforever/go-mongorm```
 
@@ -21,7 +27,7 @@ func (User) Collection() string {
 ```go
 _, err := mongorm.New(mongorm.NewConfig().SetDBName("emp_local").SetURI("mongo://127.0.0.1:27017"))
 ```
-3. Run a Find Query on users:
+3. Write a Find Query on users:
 ```go
 user, err := mongorm.FindOneWithFilter[User](bson.M{
     "username": "admin",
@@ -32,6 +38,10 @@ if err != nil {
 }
 
 fmt.Printf("%#v\n", user)
+```
+4. Run the project:
+```shell
+go1.18beta2 main.go
 ```
 
 ## TODO:
