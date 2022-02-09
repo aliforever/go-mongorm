@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/aliforever/mongorm"
+	"github.com/aliforever/go-mongorm"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
