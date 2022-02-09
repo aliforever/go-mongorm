@@ -25,7 +25,7 @@ func (User) Collection() string {
 ```
 2. Define your settings
 ```go
-_, err := mongorm.New(mongorm.NewConfig().SetDBName("emp_local").SetURI("mongo://127.0.0.1:27017"))
+_, err := mongorm.New(mongorm.NewConfig().SetDBName("mydb").SetURI("mongo://127.0.0.1:27017"))
 ```
 3. Write a Find Query on users:
 ```go

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	_, err := mongorm.New(mongorm.NewConfig().SetDBName("emp_local"))
+	_, err := mongorm.New(mongorm.NewConfig().SetDBName("mydb"))
 
 	user, err := mongorm.FindOneWithFilter[User](bson.M{
 		"username": "admin",
