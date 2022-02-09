@@ -2,6 +2,7 @@ package mongorm
 
 import (
 	"context"
+	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -26,8 +27,16 @@ func New(config *Config) (m *Mongorm, err error) {
 	ctx, cancel := context.WithTimeout(config.contextFn(), config.connectionTimeOut)
 	defer cancel()
 
+	var co *options.ClientOptions
+	co = options.Client()
+	if config.uri != "" {
+		co.ApplyURI(config.uri)
+	} else if config.host != "" && config.port != "" {
+		co.ApplyURI(fmt.Sprintf("mongodb://%s:%s", config.host, config.port))
+	}
+
 	var client *mongo.Client
-	client, err = mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err = mongo.Connect(ctx, co)
 	if err != nil {
 		return
 	}
